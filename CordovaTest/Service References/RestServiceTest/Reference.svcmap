@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="82a87f90-25a0-45cf-8056-1beb8fcb6d1c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://tpw0004/RestService/RestServiceTest.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="RestServiceTest.xsd" MetadataType="Schema" ID="c85d385b-8f14-4889-80fc-82b0e58d015d" SourceId="1" SourceUrl="http://tpw0004/RestService/RestServiceTest.svc?xsd=xsd1" />
+    <MetadataFile FileName="RestServiceTest.disco" MetadataType="Disco" ID="850813e5-3b05-4126-bf4a-77cfe781ba8c" SourceId="1" SourceUrl="http://tpw0004/RestService/RestServiceTest.svc?disco" />
+    <MetadataFile FileName="RestServiceTest1.xsd" MetadataType="Schema" ID="313cfbe4-3188-41d2-8a08-23e66fe9a271" SourceId="1" SourceUrl="http://tpw0004/RestService/RestServiceTest.svc?xsd=xsd0" />
+    <MetadataFile FileName="RestServiceTest.wsdl" MetadataType="Wsdl" ID="bb86d2dc-1021-4e87-98f6-1307956d1ec0" SourceId="1" SourceUrl="http://tpw0004/RestService/RestServiceTest.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

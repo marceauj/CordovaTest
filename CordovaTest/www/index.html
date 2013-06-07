@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+       Licensed to the Apache Software Foundation (ASF) under one
+       or more contributor license agreements.  See the NOTICE file
+       distributed with this work for additional information
+       regarding copyright ownership.  The ASF licenses this file
+       to you under the Apache License, Version 2.0 (the
+       "License"); you may not use this file except in compliance
+       with the License.  You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing,
+       software distributed under the License is distributed on an
+       "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+       KIND, either express or implied.  See the License for the
+       specific language governing permissions and limitations
+       under the License.
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+    <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+    <script type="text/javascript">
+
+        var map = null;
+        var pinInfoBox = null;
+
+        function GetMap() {
+
+            
+            // Define map options to generate initial map.
+            var mapOptions = {
+                credentials: "AiWj_XV8B8r40_p4s6y5qBZ9jixKPxiu4---dCDGtGB-osAT0HFFb_PFYb2bagVP",
+                center: new Microsoft.Maps.Location(48.425818, -123.366305),
+                mapTypeId : Microsoft.Maps.MapTypeId.road,
+                zoom: 15,
+                showScalebar : false
+            }
+            // instantiate map
+            map = new Microsoft.Maps.Map(document.getElementById("mapDiv"), mapOptions);
+
+            // location of pushpin
+            var loc = new Microsoft.Maps.Location(48.425818, -123.366305);
+            //48.424683,-123.365332
+            var loc1 = new Microsoft.Maps.Location(48.424683, -123.365332);
+            //48.425529,-123.367839
+            var loc2 = new Microsoft.Maps.Location(48.425529, -123.367839);
+            //48.425771,-123.368436
+            var loc3 = new Microsoft.Maps.Location(48.425771, -123.368436);
+
+            // instiantiate pushpin
+            var pins = new Microsoft.Maps.Pushpin(loc, { text: '1' });
+            
+            //var testID = null;
+            //$.ajax({
+            //    url: "http://localhost/RestService/RestServiceTest.svc",
+            //    data: {
+            //        id: 124
+            //    },
+            //    success: function (data){
+
+            //});
+
+            //pins.push(new Microsoft.Maps.Pushpin(loc));
+            //pins.push(new Microsoft.Maps.Pushpin(loc1));
+            //pins.push(new Microsoft.Maps.Pushpin(loc2));
+            //pins.push(new Microsoft.Maps.Pushpin(loc3));
+
+            // define pinpush infobox
+            pinInfoBox = new Microsoft.Maps.Infobox(pins.getLocation(),
+                {
+                    title: 'TP Systems Ltd',
+                    description: 'This pushpin is located at (0,0).' + 'For real',
+                    visible: false,
+                    offset: new Microsoft.Maps.Point(0, 15),
+
+                });
+            // Add handler for the pushping click event
+            Microsoft.Maps.Events.addHandler(pins, 'click', displayInfobox);
+            //  Microsoft.Maps.Events.addHandler(pins, 'click', displayInfobox);
+
+            // Hide the info box when the map is moved
+            Microsoft.Maps.Events.addHandler(map, 'viewchange', hideInfobox);
+              
+            // push pin to map
+            map.entities.push(pins);
+            // push the pinInfobox
+            map.entities.push(pinInfoBox);
+        }
+
+        // function to show pinPushBox. Triggered on click of pin.
+        function displayInfobox(e) {
+            pinInfoBox.setOptions({ visible: true });
+        }
+
+        // funciton to hide pinPushBox. Triggered when map is moved
+        function hideInfobox(e) {
+            pinInfoBox.setOptions({ visible: false });
+        }
+
+       
+    </script>
+
+    <title>Hello World</title>
+</head>
+<body onload="GetMap();">
+    <div class="app">
+        <h1>MAG Finder</h1>
+        <!--<div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>-->
+        <div>
+            <p>
+                <label class="lbl">Drink Type</label>
+                <select class="ddl" id="drink">
+                    <option id="a"></option>
+                    <option id="beer">Beer</option>
+                    <option id="wineRed">Wine - Red</option>
+                    <option id="wineWhite">Wine - White</option>
+                    <option id="winAny">Wine - Other</option>
+                    <option id="otherDrink">Other</option>
+                </select>
+            </p>
+            <!--<p>
+                <label class="lbl">Colour</label>
+                <select class="ddl" id="colour" >
+                    <option id="b"></option>
+                    <option id="red">Red</option>
+                    <option id="white">White</option>
+                    <option id="otherColour">Other</option>
+                </select>
+            </p>-->
+            <p>
+                <label class="lbl">Brand</label>
+                <select class="ddl" id="brand">
+                    <option id="c"></option>
+                    <option id="brandA">Brand A</option>
+                    <option id="brandB">Brand B</option>
+                    <option id="brandC">Brand C</option>
+                </select>
+            </p>
+            <p>
+                <label class="lbl">Location Type</label>
+                <select class="ddl" id="locationType">
+                    <option id="d"></option>
+                    <option id="liquorStore">Liquor Stores</option>
+                    <option id="barRestaurent">Bar & Restaurent</option>
+                </select>
+            </p>
+            <p>
+                <button type="submit" id="btnSubmit" onclick="searchMap()">Search</button>
+            </p>
+        </div>
+        <!--<div id='mapDiv' style="position: absolute; width: 400px; height: 400px;"></div>-->
+        <div id='mapDiv' style="position: absolute; width:320px;height:400px;"></div>
+
+    </div>
+    <script type="text/javascript" src="cordova-2.7.0.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+        </script>
+</body>
+</html>
